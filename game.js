@@ -6,14 +6,17 @@ bubble.game = (function() {
         var canvas = document.getElementById("draw-background"),
                 ctx = canvas.getContext("2d");
 
-                canvas.width = 240;
-                canvas.height = 320;
+        var background = $("#game #draw-background")[0],
+            rect = background.getBoundingClientRect();
 
-                ctx.beginPath();
-                ctx.arc(50, 100, 50, 0 * Math.PI, 2 * Math.PI, false);    
-                ctx.closePath();   
-                ctx.fill();
-    }
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+
+        ctx.beginPath();
+        ctx.arc(50, 100, 50, 0 * Math.PI, 2 * Math.PI, false);    
+        ctx.closePath();   
+        ctx.fill();
+}
 
     return {
         drawBall: drawBall
