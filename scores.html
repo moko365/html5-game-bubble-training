@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <title>Score Board</title>	
         <link rel="stylesheet" href="scores.css" />
+        <link rel="stylesheet" href="tests/qunit.css" />
   		<script src="./jquery.min.js"></script>
-  		<script src="./jquery.tmpl.min.js"></script>    
+  		<script src="./jquery.tmpl.min.js"></script>  
+  		<script src="./tests/qunit.js"></script>    
   </head> 
 <body>
+<div id="qunit"></div>
+
 <script id="scoresTemplate" type="text/x-jquery-tmpl"> 
 		<tr>
 			<td>${name}</td>
@@ -54,8 +58,9 @@ function showScoreboard() {
 	return false;
 }
 
-receiveScores();
-showScoreboard();
+//receiveScores();
+//showScoreboard();
 </script>
+<script src="./tests/tests.js"></script>
 </body> 
 </html>
