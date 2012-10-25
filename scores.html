@@ -25,25 +25,37 @@
 </div>
 
 <script>
-//var json = JSON.parse(message.data);
+var json;
 
-/* json.data.scores should be */
-var scores = [
-    { name: "Jollen", score: 50 },
-    { name: "Frank", score: 100 },
-    { name: "Ellaine", score: 258 }
-];
-
-var json = {
-	type: 'score-board',
-	data: scores
-};
-
-if (json.type === 'score-board') {
-	$("#scoresTemplate").tmpl(json.data)
-    	.appendTo( "#scoresList" );
+function receiveScores() {
+	//var json = JSON.parse(message.data);
+	
+	/* json.data.scores should be */
+	var scores = [
+	    { name: "Jollen", score: 50 },
+	    { name: "Frank", score: 100 },
+	    { name: "Ellaine", score: 258 }
+	];
+	
+	json = {
+		type: 'score-board',
+		data: scores
+	};
+	
+	return 3;
 }
 
+function showScoreboard() {
+	if (json.type === 'score-board') {
+		$("#scoresTemplate").tmpl(json.data	)
+	    	.appendTo( "#scoresList" );
+	    return true;
+	}
+	return false;
+}
+
+receiveScores();
+showScoreboard();
 </script>
 </body> 
 </html>
