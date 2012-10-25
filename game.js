@@ -47,7 +47,7 @@ bubble.game = (function() {
         if (ballCount > 0) {
             ballCount = ballCount - 1;
             timeoutVar = setTimeout(drawBall, radi * 50);
-
+        } else {
            document.getElementById("draw-background").removeEventListener("click", touchEvent, false);
         }
     }
@@ -67,14 +67,14 @@ bubble.game = (function() {
         clientY = e.clientY;
 
         // 四個角
-		x1 = ballX - BallR;
-		x2 = ballX + BallR;		
-		y1 = ballY - BallR;
-		y2 = ballY + BallR;
+		x1 = ballX - ballR;
+		x2 = ballX + ballR;		
+		y1 = ballY - ballR;
+		y2 = ballY + ballR;
 
 		if ((clientX > x1) && (clientX < x2)) {
 			if ((clientY > y1) && (clientY < y2)) {
-				scores = scores + (80 - BallR);
+				scores = scores + (80 - ballR);
 				console.log("Hit! Scores: " + scores);
 
                 // DOM
