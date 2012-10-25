@@ -8,6 +8,8 @@ bubble.game = (function() {
 
     var ballCount;
 
+    var timeoutVar;
+
     function drawBall() {
         var canvas = document.getElementById("draw-background"),
                 ctx = canvas.getContext("2d");
@@ -41,6 +43,8 @@ bubble.game = (function() {
         if (ballCount > 0) {
             ballCount = ballCount - 1;
             timeoutVar = setTimeout(drawBall, radi * 50);
+
+           document.getElementById("draw-background").delEventListener("click", touchEvent, false);
         }
     }
 
