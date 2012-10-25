@@ -7,6 +7,7 @@ Modernizr.load([
     {
         load : [
             "sizzle.js",
+            "dom.js",
             "game.js"
         ],
         complete : function() {
