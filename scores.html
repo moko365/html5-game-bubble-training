@@ -40,7 +40,7 @@ var json = {
 };
 
 if (json.type === 'score-board') {
-	$("#scoresTemplate").tmpl(json.scores)
+	$("#scoresTemplate").tmpl(json.data)
     	.appendTo( "#scoresList" );
 }
 
