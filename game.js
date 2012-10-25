@@ -29,9 +29,19 @@ bubble.game = (function() {
         ctx.fill();
     }
 
+    function touchEvent(e) {
+        console.log("Click at X: " + e.clientX + ", Y: " + e.clientY);
+    }
+
+    function start() {
+          // 初始化輸入事件
+           document.getElementById("draw-background").addEventListener("click", touchEvent, false);
+    }
+
     function initialize () {
         drawBall();
-        bubble.websocket.createWebsocket();
+        start();
+        //bubble.websocket.createWebsocket();
     }
 
     return {
