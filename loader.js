@@ -1,16 +1,14 @@
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
 
-    Modernizr.load([
-            {
-               load : [
-                    "script/game.js"
-                    ],
-                complete : function() {
-                    alert("All loaded.");
-                    game.drawBall();
-                }
+Modernizr.load([
+    {
+        load : [
+            "game.js"
+        ],
+        complete : function() {
+            game.drawBall();
         }
-        ]);
-        
-    ), false);
-        
+    }
+]);
+
+}, false);
