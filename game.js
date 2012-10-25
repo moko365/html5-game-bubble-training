@@ -47,9 +47,14 @@ bubble.game = (function() {
         if (ballCount > 0) {
             ballCount = ballCount - 1;
             timeoutVar = setTimeout(drawBall, radi * 50);
+
+            gameOver();
         } else {
            document.getElementById("draw-background").removeEventListener("click", touchEvent, false);
         }
+    }
+
+    function gameOver() {
     }
 
     function touchEvent(e) {

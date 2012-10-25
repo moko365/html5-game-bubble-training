@@ -4,10 +4,8 @@
         <meta charset="utf-8">
         <title>Score Board</title>	
         <link rel="stylesheet" href="scores.css" />
-        <link rel="stylesheet" href="tests/qunit.css" />
   		<script src="./jquery.min.js"></script>
   		<script src="./jquery.tmpl.min.js"></script>  
-  		<script src="./tests/qunit.js"></script>    
   </head> 
 <body>
 <div id="qunit"></div>
@@ -30,11 +28,20 @@
 
 <script>
 var json;
+var ws;
+
+function wsOnMessage(message) {
+    json = JSON.parse(message.data);
+    showScoreboard();
+}
 
 function receiveScores() {
-	//var json = JSON.parse(message.data);
-	
-	/* json.data.scores should be */
+    ws = new WebSocket("ws://svn.moko365.com:8080/", "game-protocol");
+
+    ws.onmessage = wsOnMessage;
+
+    /* json.data.scores should be:
+
 	var scores = [
 	    { name: "Jollen", score: 50 },
 	    { name: "Frank", score: 100 },
@@ -44,7 +51,8 @@ function receiveScores() {
 	json = {
 		type: 'score-board',
 		data: scores
-	};
+    };
+    */
 	
 	return 3;
 }
@@ -58,9 +66,8 @@ function showScoreboard() {
 	return false;
 }
 
-//receiveScores();
+receiveScores();
 //showScoreboard();
 </script>
-<script src="./tests/tests.js"></script>
 </body> 
 </html>
