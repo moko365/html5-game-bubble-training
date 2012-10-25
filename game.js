@@ -16,10 +16,15 @@ bubble.game = (function() {
         ctx.arc(50, 100, 50, 0 * Math.PI, 2 * Math.PI, false);    
         ctx.closePath();   
         ctx.fill();
-}
+    }
+
+    function initialize () {
+        drawBall();
+        bubble.websocket.createWebsocket();
+    }
 
     return {
-        drawBall: drawBall
+        initialize: initialize
     }
 
 }
