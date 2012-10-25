@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Score Board</title>	
+        <link rel="stylesheet" href="scores.css" />
+  		<script src="./jquery.min.js"></script>
+  		<script src="./jquery.tmpl.min.js"></script>    
+  </head> 
+<body>
+<script id="scoresTemplate" type="text/x-jquery-tmpl"> 
+		<tr>
+			<td>${name}</td>
+			<td>${score}</td>
+		</tr>
+</script>
+
+<div>
+	<table class="dataTable" id="scoresList">
+		<tr>
+			<th>名字</th>
+			<th>分數</th>
+		</tr>
+	</table>
+</div>
+
+<script>
+//var json = JSON.parse(message.data);
+
+/* json.data.scores should be */
+var scores = [
+    { name: "Jollen", score: 50 },
+    { name: "Frank", score: 100 },
+    { name: "Ellaine", score: 258 }
+];
+
+var json = {
+	type: 'score-board',
+	data: scores
+};
+
+if (json.type === 'score-board') {
+	$("#scoresTemplate").tmpl(json.scores)
+    	.appendTo( "#scoresList" );
+}
+
+</script>
+</body> 
+</html>
