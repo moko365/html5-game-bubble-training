@@ -10,6 +10,10 @@ bubble.game = (function() {
 
     var timeoutVar;
 
+    var scores;
+
+    var scoreBoard;
+
     function drawBall() {
         var canvas = document.getElementById("draw-background"),
                 ctx = canvas.getContext("2d");
@@ -44,12 +48,40 @@ bubble.game = (function() {
             ballCount = ballCount - 1;
             timeoutVar = setTimeout(drawBall, radi * 50);
 
-           document.getElementById("draw-background").delEventListener("click", touchEvent, false);
+           document.getElementById("draw-background").removeEventListener("click", touchEvent, false);
         }
     }
 
     function touchEvent(e) {
         console.log("Click at X: " + e.clientX + ", Y: " + e.clientY);
+        
+        var x1, 
+            x2,
+            y1,
+            y2;
+
+        var clientX,
+            clientY;
+
+        clientX = e.clientX;
+        clientY = e.clientY;
+
+        // 四個角
+		x1 = ballX - BallR;
+		x2 = ballX + BallR;		
+		y1 = ballY - BallR;
+		y2 = ballY + BallR;
+
+		if ((clientX > x1) && (clientX < x2)) {
+			if ((clientY > y1) && (clientY < y2)) {
+				scores = scores + (80 - BallR);
+				console.log("Hit! Scores: " + scores);
+
+                // DOM
+				scoreBoard.innerHTML = "Scores: " + scores;
+			}
+		}
+
     }
 
     function start() {
@@ -61,6 +93,9 @@ bubble.game = (function() {
 
     function initialize () {
         ballCount = 10;
+        scores = 0;
+
+        scoreBoard = document.getElementById("score-board");
 
         start();
         //bubble.websocket.createWebsocket();
