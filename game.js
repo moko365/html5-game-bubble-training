@@ -12,8 +12,19 @@ bubble.game = (function() {
         canvas.width = rect.width;
         canvas.height = rect.height;
 
+        // radi is in [0 .. 80]
+        var radi = Math.floor(Math.random() * 80);
+
+        if (radi < 15) {
+            radi = 15;
+        }
+
+        // 產生位置
+        var x = Math.floor(Math.random() * (rect.width - radi)),
+            y = Math.floor(Math.random() * (rect.height - radi));
+
         ctx.beginPath();
-        ctx.arc(50, 100, 50, 0 * Math.PI, 2 * Math.PI, false);    
+        ctx.arc(x, y, radi, 0 * Math.PI, 2 * Math.PI, false);    
         ctx.closePath();   
         ctx.fill();
     }
