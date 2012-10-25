@@ -14,6 +14,8 @@ bubble.game = (function() {
 
     var scoreBoard;
 
+    var webSocket;
+
     function drawBall() {
         var canvas = document.getElementById("draw-background"),
                 ctx = canvas.getContext("2d");
@@ -47,14 +49,21 @@ bubble.game = (function() {
         if (ballCount > 0) {
             ballCount = ballCount - 1;
             timeoutVar = setTimeout(drawBall, radi * 50);
-
-            gameOver();
         } else {
            document.getElementById("draw-background").removeEventListener("click", touchEvent, false);
+            gameOver();
         }
     }
 
     function gameOver() {
+        var obj = {
+            name: "jollen",
+            scores: scores
+        };
+
+        var json = JSON.stringify(obj);
+
+        webSocket.send(json);
     }
 
     function touchEvent(e) {
@@ -105,8 +114,10 @@ bubble.game = (function() {
 
         scoreBoard = document.getElementById("score-board");
 
+        bubble.websocket.createWebsocket();
+        webSocket = bubble.websocket.getWebSocket();
+
         start();
-        //bubble.websocket.createWebsocket();
     }
 
     return {
