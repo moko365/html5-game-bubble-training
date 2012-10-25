@@ -13,4 +13,8 @@ var game = (function() {
                 ctx.fill();
     }
 
+    return {
+        drawBall: drawBall
+    }
+
 }) ();
