@@ -2,6 +2,12 @@ bubble.game = (function() {
     var dom = bubble.dom;
     var $ = dom.$;
 
+    var ballX,
+        ballY,
+        ballR;
+
+    var ballCount;
+
     function drawBall() {
         var canvas = document.getElementById("draw-background"),
                 ctx = canvas.getContext("2d");
@@ -27,6 +33,15 @@ bubble.game = (function() {
         ctx.arc(x, y, radi, 0 * Math.PI, 2 * Math.PI, false);    
         ctx.closePath();   
         ctx.fill();
+
+        ballX = x;
+        ballY = y;
+        ballR = radi;
+
+        if (ballCount > 0) {
+            ballCount = ballCount - 1;
+            timeoutVar = setTimeout(drawBall, radi * 50);
+        }
     }
 
     function touchEvent(e) {
@@ -36,10 +51,13 @@ bubble.game = (function() {
     function start() {
           // 初始化輸入事件
            document.getElementById("draw-background").addEventListener("click", touchEvent, false);
+
+           drawBall();
     }
 
     function initialize () {
-        drawBall();
+        ballCount = 10;
+
         start();
         //bubble.websocket.createWebsocket();
     }
