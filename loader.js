@@ -1,3 +1,6 @@
+var bubble = {
+};
+
 window.addEventListener("load", function() {
 
 Modernizr.load([
@@ -7,7 +10,7 @@ Modernizr.load([
             "game.js"
         ],
         complete : function() {
-            game.drawBall();
+            bubble.game.drawBall();
         }
     }
 ]);

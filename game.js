@@ -1,4 +1,4 @@
-var game = (function() {
+bubble.game = (function() {
 
     function drawBall() {
         var canvas = document.getElementById("draw-background"),
