@@ -78,10 +78,13 @@ bubble.game = (function() {
 				console.log("Hit! Scores: " + scores);
 
                 // DOM
-				scoreBoard.innerHTML = "Scores: " + scores;
+				scoreBoard.innerHTML = "<h1>Scores: " + scores + "</h1>";
 			}
 		}
 
+        // re-generate a ball
+        clearTimeout(timeoutVar);
+        drawBall();
     }
 
     function start() {
